@@ -1,0 +1,39 @@
+﻿<UserControl x:Class="HouseRentalSystem.Template.HouseSample"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HouseRentalSystem.Template"
+             Name="houseSample">
+    <Border CornerRadius="10" Padding="10" Margin="5 0">
+        <Border.Style>
+            <Style TargetType="Border">
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="#f7f6f4"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </Border.Style>
+        <StackPanel Orientation="Vertical">
+            <TextBlock Text="{Binding ElementName=houseSample,Path=HouseAddress}" Style="{StaticResource HouseTitleText}"/>
+            <StackPanel Orientation="Horizontal" Margin="0 5 0 0">
+                <Image Source="/img/HouseSample.png" Width="40" Height="40"/>
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Vertical" Margin="5 0">
+                        <TextBlock Style="{StaticResource HouseStyleTitleText}" Text="房型" HorizontalAlignment="Center" Margin="0 0 0 5"/>
+                        <TextBlock Style="{StaticResource HouseStyleText}" Text="{Binding ElementName=houseSample,Path=HouseStyle}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Margin="5 0">
+                        <TextBlock Style="{StaticResource HouseStyleTitleText}" Text="租金" Margin="0 0 0 5" HorizontalAlignment="Center"/>
+                        <TextBlock Style="{StaticResource HouseStyleText}" Text="{Binding ElementName=houseSample,Path=HouseRent}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Margin="5 0">
+                        <TextBlock Style="{StaticResource HouseStyleTitleText}" Text="状态" Margin="0 0 0 5"/>
+                        <TextBlock Style="{StaticResource HouseStyleText}" Text="{Binding ElementName=houseSample,Path=HouseState}"/>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </Border>
+</UserControl>

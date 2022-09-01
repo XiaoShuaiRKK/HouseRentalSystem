@@ -1,0 +1,51 @@
+﻿<Grid x:Class="HouseRentalSystem.Template.HouseDetailsPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HouseRentalSystem.Template" Name="housedetailspage">
+    <Grid.RowDefinitions>
+        <RowDefinition Height="9*"/>
+        <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+    <StackPanel Orientation="Vertical">
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Style="{StaticResource DetailsTitle}" Text="{Binding ElementName=housedetailspage,Path=DetailsHouseAddress}"/>
+            <Image Source="/img/HouseSample.png" Height="30" Margin="20 0 0 0"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Vertical" Margin="20 0 120 0">
+                <TextBlock Margin="0 30">
+                    <Run Text="房型:" Style="{StaticResource FirstLevelTilte}"/>
+                    <Run Text="{Binding ElementName=housedetailspage,Path=DetailsHouseType}" Style="{StaticResource SecondLevelTilte}"/>
+                </TextBlock>
+                <TextBlock Margin="0 30">
+                    <Run Text="房主:" Style="{StaticResource FirstLevelTilte}"/>
+                    <Run Text="{Binding ElementName=housedetailspage,Path=DetailsHouseMaster}" Style="{StaticResource SecondLevelTilte}"/>
+                </TextBlock>
+                <TextBlock Margin="0 30">
+                    <Run Text="房龄:" Style="{StaticResource FirstLevelTilte}"/>
+                    <Run Text="{Binding ElementName=housedetailspage,Path=DetailsHouseAge}" Style="{StaticResource SecondLevelTilte}"/>
+                </TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Margin="50 0 20 0">
+                <TextBlock Margin="0 30">
+                    <Run Text="房租:" Style="{StaticResource FirstLevelTilte}"/>   
+                    <Run Text="{Binding ElementName=housedetailspage,Path=DetailsHouseRent}" Style="{StaticResource SecondLevelTilte}"/>
+                    <Run Text="(以每个月计算)" Style="{StaticResource ThirdLevelTitle}"/>
+                </TextBlock>
+                <TextBlock Margin="0 30">
+                    <Run Text="租客:" Style="{StaticResource FirstLevelTilte}"/>
+                    <Run Text="{Binding ElementName=housedetailspage,Path=DetailsHouseTenant}" Style="{StaticResource SecondLevelTilte}"/>
+                </TextBlock>
+                <TextBlock Margin="0 30">
+                    <Run Text="状态:" Style="{StaticResource FirstLevelTilte}"/>
+                    <Run Text="{Binding ElementName=housedetailspage,Path=DetailsHouseState}" Style="{StaticResource SecondLevelTilte}"/>
+                </TextBlock>
+            </StackPanel>
+        </StackPanel>
+    </StackPanel>
+    <Grid Grid.Row="1" Width="800">
+        <Button Style="{StaticResource ButtonOK}" Width="80" Height="40" Content="{Binding ElementName=housedetailspage,Path=ButtonText}" Cursor="Hand" HorizontalAlignment="Right"/>
+    </Grid>
+</Grid>

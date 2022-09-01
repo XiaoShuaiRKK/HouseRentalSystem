@@ -1,0 +1,400 @@
+﻿<Window x:Class="HouseRentalSystem.Master"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+        xmlns:local="clr-namespace:HouseRentalSystem.Template" xmlns:data="clr-namespace:HouseRentalSystem.Data" d:DataContext="{d:DesignInstance Type=data:StringToDisplay}"
+        mc:Ignorable="d"
+        Title="Master" Width="800" Height="450" WindowStyle="None" AllowsTransparency="True" Background="Transparent" WindowStartupLocation="CenterScreen">
+    <Grid ClipToBounds="True" Background="Transparent">
+        <local:Loading HorizontalAlignment="Center" VerticalAlignment="Center" Panel.ZIndex="1" Opacity="0" x:Name="LoadBt"/>
+        <Grid ClipToBounds="True" x:Name="MasterMainForm">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="8*"/>
+            </Grid.ColumnDefinitions>
+            <Border CornerRadius="30 0 0 30" Grid.Column="0" Background="#f7f6f4">
+                <Grid x:Name="Nav">
+                    <Border Background="#3253f1" CornerRadius="20" Margin="18 20">
+                        <Border.Effect>
+                            <DropShadowEffect ShadowDepth="1"
+                                              BlurRadius="20"
+                                              Opacity="0.4"/>
+                        </Border.Effect>
+                        <Grid>
+                            <StackPanel>
+                                <Button Style="{StaticResource menuButton}"
+                                        Margin="15 40 15 20" Background="#fff" x:Name="HomeMenu" Click="HomeMenu_Click">
+                                    <Image Source="/img/HomePageBlue.png" x:Name="HomeMenuImg"
+                                           Width="25"/>
+                                </Button>
+
+                                <Button Style="{StaticResource menuButton}" x:Name="OneMenu" Click="OneMenu_Click">
+                                    <Image Source="/img/Lease.png" x:Name="OneMemuImg"
+                                           Width="25"/>
+                                </Button>
+
+                                <Button Style="{StaticResource menuButton}" x:Name="TwoMenu" Click="TwoMenu_Click">
+                                    <Image Source="/img/Statistics.png" x:Name="TwoMenuImg"
+                                           Width="25"/>
+                                </Button>
+
+                                <Button Style="{StaticResource menuButton}" x:Name="ThreeMenu" Click="ThreeMenu_Click">
+                                    <Image Source="/img/ToMoDaChi.png" x:Name="ThreeMenuImg"
+                                           Width="25"/>
+                                </Button>
+
+                                <Button Style="{StaticResource menuButton}" x:Name="FourMenu" Click="FourMenu_Click">
+                                    <Image Source="/img/224User.png" x:Name="FourMenuImg"
+                                           Width="25"/>
+                                </Button>
+                            </StackPanel>
+                            <Button Style="{StaticResource menuButton}"
+                                    Margin="15 0 15 25"
+                                    VerticalAlignment="Bottom"
+                                    x:Name="MasterClose" Click="MasterClose_Click">
+                                <Image Source="/img/Close.png"
+                                       Width="25"/>
+                            </Button>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Border>
+            <Border CornerRadius="0 30 30 0" Grid.Column="1" Background="#f7f6f4" Padding="20">
+                <Grid>
+                    <Grid x:Name="HomePage" Opacity="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="6*"/>
+                            <ColumnDefinition Width="2.5*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="1.5*"/>
+                                <RowDefinition Height="3*"/>
+                            </Grid.RowDefinitions>
+                            <Border Grid.Row="0" Style="{StaticResource HomepageHeaderTitle}">
+                                <Grid>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                        <Border CornerRadius="80" ClipToBounds="True" Width="60" Height="60" BorderBrush="#3253f1" BorderThickness="3">
+                                            <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                <Grid.Clip>
+                                                    <EllipseGeometry Center="27 27" RadiusX="27" RadiusY="27"/>
+                                                </Grid.Clip>
+                                                <Image Width="55" Height="55" x:Name="HomeTopImg" Stretch="Fill"/>
+                                            </Grid>
+                                        </Border>
+                                        <StackPanel VerticalAlignment="Center" Margin="10 0 0 0">
+                                            <TextBlock x:Name="TitleText" Text="{Binding Text}" FontSize="28" FontWeight="Bold" Foreground="#083353"/>
+                                            <TextBlock Text="祝你有美好的一天" Foreground="#6c879a" Margin="3 3 0 0"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                    <Grid HorizontalAlignment="Right" VerticalAlignment="Center">
+                                        <TextBlock Text="(房东端)" FontSize="26" Foreground="#083353" FontWeight="Bold"/>
+                                    </Grid>
+                                </Grid>
+                            </Border>
+                            <Border Grid.Row="1" CornerRadius="10" Background="#fff" Margin="0 10 0 5" Padding="10">
+                                <StackPanel Orientation="Vertical">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="我的房子" Style="{StaticResource MyHouseTitleText}" Margin="0 0 10 0"/>
+                                        <Icon:PackIconMaterial Kind="ArrowRightBoldCircleOutline" VerticalAlignment="Center" Foreground="#3253f1"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <local:HouseSample x:Name="HouseListOne" HouseAddress="{Binding OneHouseListAddresss}" HouseRent="{Binding OneHouseListRent}"
+                                                       HouseState="{Binding OneHouseListState}" HouseStyle="{Binding OneHouseListType}"/>
+                                        <local:HouseSample x:Name="HouseListTwo" HouseAddress="{Binding TwoHouseListAddresss}" HouseRent="{Binding TwoHouseListRent}"
+                                                       HouseState="{Binding TwoHouseListState}" HouseStyle="{Binding TwoHouseListType}"/>
+                                        <local:HouseSample x:Name="HouseListThree" HouseAddress="{Binding ThreeHouseListAddresss}" HouseRent="{Binding ThreeHouseListRent}"
+                                                       HouseState="{Binding ThreeHouseListState}" HouseStyle="{Binding ThreeHouseListType}"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+
+                            <Border Grid.Row="2" Style="{StaticResource HomepageHeaderTitle}" Margin="0 5 0 0">
+                                <Grid>
+
+                                    <!--Title-->
+                                    <TextBlock Text="出售统计图" Style="{StaticResource TitleTextBig}"/>
+
+                                    <!--Legends-->
+                                    <local:Legends HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 8 10 0"/>
+
+                                    <!--Chart-->
+                                    <lvc:CartesianChart Margin="5 40 0 20" LegendLocation="None">
+                                        <lvc:CartesianChart.DataTooltip>
+                                            <lvc:DefaultTooltip Background="Red" Foreground="#ffffff" BulletSize="10" Opacity="0.7" />
+                                        </lvc:CartesianChart.DataTooltip>
+
+                                        <lvc:CartesianChart.AxisX>
+                                            <lvc:Axis Foreground="#90a3b2" ShowLabels="True" MinValue="0" MaxValue="50" Title="营销" >
+                                                <lvc:Axis.Separator>
+                                                    <lvc:Separator StrokeThickness="0" Step="2"/>
+                                                </lvc:Axis.Separator>
+                                            </lvc:Axis>
+                                        </lvc:CartesianChart.AxisX>
+
+                                        <lvc:CartesianChart.AxisY>
+                                            <lvc:Axis Foreground="#90a3b2" ShowLabels="True" MinValue="1" MaxValue="12" Title="月份">
+                                                <lvc:Axis.Separator>
+                                                    <lvc:Separator StrokeThickness="0" Step="2"/>
+                                                </lvc:Axis.Separator>
+                                            </lvc:Axis>
+                                        </lvc:CartesianChart.AxisY>
+
+                                        <lvc:CartesianChart.Series>
+                                            <lvc:LineSeries x:Name="FirstDataLine" Values="{Binding ValuesToLine}"/>
+                                        </lvc:CartesianChart.Series>
+                                    </lvc:CartesianChart>
+
+                                    <!--Node-->
+                                    <Grid VerticalAlignment="Bottom" Margin="10 0">
+                                        <Icon:PackIconMaterial Kind="Information" Foreground="#f96654"/>
+                                        <TextBlock TextWrapping="Wrap" Margin="30 0 0 0" LineHeight="18" Foreground="#b7b7b7"
+                                               Text="此统计图可能会有或多或少的偏差，但总体的走势是没有问题的。"/>
+                                    </Grid>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                        <Grid Grid.Column="1" Margin="15 0 10 0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="3.1*"/>
+                                <RowDefinition Height="3.5*"/>
+                            </Grid.RowDefinitions>
+                            <Border Style="{StaticResource HomepageHeaderTitle}" Margin="0 0 0 10">
+                                <StackPanel>
+                                    <TextBlock Text="出租列表" Style="{StaticResource TitleTextBig}"/>
+                                    <TextBlock Text="Sales List 最近出售" Style="{StaticResource SecondaryTitleText}"/>
+
+                                    <!--User Card-->
+                                    <local:UserCard x:Name="OneSalesListUser" UserName="{Binding OneUserName}" Sales="{Binding OneRent}" Period="{Binding OneLeaseTerm}"/>
+
+                                    <local:UserCard x:Name="SecondSalesListUser" UserName="{Binding SecondUserName}" Sales="{Binding SecondRent}" Period="{Binding SecondLeaseTerm}"/>
+                                </StackPanel>
+                            </Border>
+                            <Border Grid.Row="1" Style="{StaticResource HomepageHeaderTitle}">
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="我的好友" Style="{StaticResource TitleTextBig}" FontSize="22"/>
+                                    <TextBlock Text="最近的好友" Style="{StaticResource SecondaryTitleText}"/>
+                                    <local:FriendsCard x:Name="FirstFriendCard" FriendsListName="{Binding FriendsListUserName}" FriendsListSendLately="{Binding FriendsListSend}"
+                                                   FriendsListOnline="{Binding FriendsListOnlineTime}"/>
+                                    <local:FriendsCard x:Name="SecondFriendCard" FriendsListName="{Binding FriendsListUserName}" FriendsListSendLately="{Binding FriendsListSend}"
+                                                   FriendsListOnline="{Binding FriendsListOnlineTime}"/>
+                                    <local:FriendsCard x:Name="ThirdFriendCard" FriendsListName="{Binding FriendsListUserName}" FriendsListSendLately="{Binding FriendsListSend}"
+                                                   FriendsListOnline="{Binding FriendsListOnlineTime}"/>
+                                </StackPanel>
+                            </Border>
+                        </Grid>
+                    </Grid>
+                    <Grid x:Name="RentalPage" Opacity="1">
+                        <Border Style="{StaticResource HomepageHeaderTitle}" Padding="20 5">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1.2*"/>
+                                    <RowDefinition Height="8*"/>
+                                    <RowDefinition Height="0.5*"/>
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Row="0">
+                                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left" x:Name="BackFunction" Visibility="Collapsed">
+                                        <Button Background="Transparent" BorderThickness="0" x:Name="BackButton" Click="BackButton_Click" Cursor="Hand">
+                                            <Icon:PackIconMaterial Kind="Backspace" Foreground="#3253f1" Width="30" Height="20"/>
+                                        </Button>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" x:Name="ControlGroup">
+                                        <Border x:Name="MarketButton" Style="{StaticResource ButtonBoder}" Background="#3253f1" MouseLeave="MarketButton_MouseLeave" MouseEnter="MarketButton_MouseEnter" MouseDown="MarketButton_MouseDown">
+                                            <TextBlock Text="市场" x:Name="MarketText" VerticalAlignment="Center"
+                                                           HorizontalAlignment="Center" Foreground="#ffffff"
+                                                           FontWeight="Bold" FontSize="13"/>
+
+                                        </Border>
+                                        <Border x:Name="PersonalButton" Style="{StaticResource ButtonBoder}" Background="Transparent" MouseLeave="PersonalButton_MouseLeave" MouseEnter="PersonalButton_MouseEnter" MouseDown="PersonalButton_MouseDown">
+                                            <TextBlock Text="我的" Foreground="#3253f1" x:Name="PersonalText"
+                                                           VerticalAlignment="Center" HorizontalAlignment="Center"
+                                                           FontWeight="Bold" FontSize="13"/>
+                                        </Border>
+                                        <Button Background="Transparent" BorderThickness="0" x:Name="AddButton" Click="AddButton_Click" Cursor="Hand">
+
+                                            <Button.Triggers>
+                                                <EventTrigger RoutedEvent="Button.Click">
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <DoubleAnimation To="0" Storyboard.TargetName="MarketPage" Storyboard.TargetProperty="Opacity"
+                                                                             Duration="0:0:0:0.2"/>
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <DoubleAnimation To="0" Storyboard.TargetName="PersonalPage" Storyboard.TargetProperty="Opacity"
+                                                                             Duration="0:0:0:0.2"/>
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <DoubleAnimation To="1" Storyboard.TargetName="AddHouse" Storyboard.TargetProperty="Opacity"
+                                                                             Duration="0:0:0:0.2"/>
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+
+                                                </EventTrigger>
+                                            </Button.Triggers>
+                                            
+                                            <Icon:PackIconMaterial Kind="PlusCircle" Foreground="#3253f1" Width="25" Height="20"/>
+                                        </Button>
+                                    </StackPanel>
+                                    <Border BorderBrush="#d9d9d9" BorderThickness="1" CornerRadius="15" Width="180" HorizontalAlignment="Right" Margin="0 23 10 23">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <TextBlock x:Name="textSerch" MouseDown="textSerch_MouseDown" Text="Serch...." Style="{StaticResource textHint}"/>
+                                            <TextBox x:Name="txtSerch" TextChanged="txtSerch_TextChanged" Style="{StaticResource textBox}"/>
+
+                                        </Grid>
+                                    </Border>
+                                </Grid>
+                                <Grid Grid.Row="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="115*"/>
+                                        <ColumnDefinition Width="201*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Border Background="#fff" CornerRadius="20" Padding="20" Grid.ColumnSpan="2">
+                                        <Border.Effect>
+                                            <DropShadowEffect Color="Black"  BlurRadius="10" ShadowDepth="1" Opacity="0.4" />
+                                        </Border.Effect>
+                                        <Grid>
+                                            <Grid x:Name="MarketPage" Visibility="Visible">
+                                                <StackPanel Orientation="Vertical">
+                                                    <StackPanel Orientation="Horizontal" x:Name="CommodityLineOne" Margin="0 5">
+                                                        <local:HouseSample Margin="10 0" x:Name="OneRowOneCloum" HouseAddress="{Binding OneHouseListAddresss}" HouseRent="{Binding OneHouseListRent}"
+                                                       HouseState="{Binding OneHouseListState}" HouseStyle="{Binding OneHouseListType}" MouseDown="CommodityLoad_Down"/>
+                                                        <local:HouseSample Margin="10 0" x:Name="OneRowTwoCloum" HouseAddress="{Binding OneHouseListAddresss}" HouseRent="{Binding OneHouseListRent}"
+                                                       HouseState="{Binding OneHouseListState}" HouseStyle="{Binding OneHouseListType}" MouseDown="CommodityLoad_Down"/>
+                                                        <local:HouseSample Margin="10 0" x:Name="OneRowThreeCloum" HouseAddress="{Binding OneHouseListAddresss}" HouseRent="{Binding OneHouseListRent}"
+                                                       HouseState="{Binding OneHouseListState}" HouseStyle="{Binding OneHouseListType}" MouseDown="CommodityLoad_Down"/>
+                                                        <local:HouseSample Margin="10 0" x:Name="OneRowFourCloum" HouseAddress="{Binding OneHouseListAddresss}" HouseRent="{Binding OneHouseListRent}"
+                                                       HouseState="{Binding OneHouseListState}" HouseStyle="{Binding OneHouseListType}" MouseDown="CommodityLoad_Down"/>
+                                                    </StackPanel>
+                                                    <StackPanel Orientation="Horizontal" x:Name="CommodityLineTwo" Margin="0 5">
+                                                        <local:HouseSample Margin="10 0" x:Name="TwoRowOneCloum" HouseAddress="{Binding OneHouseListAddresss}" HouseRent="{Binding OneHouseListRent}"
+                                                       HouseState="{Binding OneHouseListState}" HouseStyle="{Binding OneHouseListType}" MouseDown="CommodityLoad_Down"/>
+                                                        <local:HouseSample Margin="10 0" x:Name="TwoRowTwoCloum" HouseAddress="{Binding OneHouseListAddresss}" HouseRent="{Binding OneHouseListRent}"
+                                                       HouseState="{Binding OneHouseListState}" HouseStyle="{Binding OneHouseListType}" MouseDown="CommodityLoad_Down"/>
+                                                        <local:HouseSample Margin="10 0" x:Name="TwoRowThreeCloum" HouseAddress="{Binding OneHouseListAddresss}" HouseRent="{Binding OneHouseListRent}"
+                                                       HouseState="{Binding OneHouseListState}" HouseStyle="{Binding OneHouseListType}" MouseDown="CommodityLoad_Down"/>
+                                                        <local:HouseSample Margin="10 0" x:Name="TwoRowFourCloum" HouseAddress="{Binding OneHouseListAddresss}" HouseRent="{Binding OneHouseListRent}"
+                                                       HouseState="{Binding OneHouseListState}" HouseStyle="{Binding OneHouseListType}" MouseDown="CommodityLoad_Down"/>
+                                                    </StackPanel>
+                                                    <StackPanel Orientation="Horizontal" x:Name="CommodityLineThree" Margin="0 5">
+                                                        <local:HouseSample Margin="10 0" x:Name="ThreeRowOneCloum" HouseAddress="{Binding OneHouseListAddresss}" HouseRent="{Binding OneHouseListRent}"
+                                                       HouseState="{Binding OneHouseListState}" HouseStyle="{Binding OneHouseListType}" MouseDown="CommodityLoad_Down"/>
+                                                        <local:HouseSample Margin="10 0" x:Name="ThreeRowTwoCloum" HouseAddress="{Binding OneHouseListAddresss}" HouseRent="{Binding OneHouseListRent}"
+                                                       HouseState="{Binding OneHouseListState}" HouseStyle="{Binding OneHouseListType}" MouseDown="CommodityLoad_Down"/>
+                                                        <local:HouseSample Margin="10 0" x:Name="ThreeRowThreeCloum" HouseAddress="{Binding OneHouseListAddresss}" HouseRent="{Binding OneHouseListRent}"
+                                                       HouseState="{Binding OneHouseListState}" HouseStyle="{Binding OneHouseListType}" MouseDown="CommodityLoad_Down"/>
+                                                        <local:HouseSample Margin="10 0" x:Name="ThreeRowFourCloum" HouseAddress="{Binding OneHouseListAddresss}" HouseRent="{Binding OneHouseListRent}"
+                                                       HouseState="{Binding OneHouseListState}" HouseStyle="{Binding OneHouseListType}" MouseDown="CommodityLoad_Down"/>
+                                                    </StackPanel>
+                                                    <StackPanel Orientation="Horizontal" x:Name="CommodityLineFour" Margin="0 5">
+                                                        <local:HouseSample Margin="10 0" x:Name="FourRowOneCloum" HouseAddress="{Binding OneHouseListAddresss}" HouseRent="{Binding OneHouseListRent}"
+                                                       HouseState="{Binding OneHouseListState}" HouseStyle="{Binding OneHouseListType}" MouseDown="CommodityLoad_Down"/>
+                                                        <local:HouseSample Margin="10 0" x:Name="FourRowTwoCloum" HouseAddress="{Binding OneHouseListAddresss}" HouseRent="{Binding OneHouseListRent}"
+                                                       HouseState="{Binding OneHouseListState}" HouseStyle="{Binding OneHouseListType}" MouseDown="CommodityLoad_Down"/>
+                                                        <local:HouseSample Margin="10 0" x:Name="FourRowThreeCloum" HouseAddress="{Binding OneHouseListAddresss}" HouseRent="{Binding OneHouseListRent}"
+                                                       HouseState="{Binding OneHouseListState}" HouseStyle="{Binding OneHouseListType}" MouseDown="CommodityLoad_Down"/>
+                                                        <local:HouseSample Margin="10 0" x:Name="FourRowFourCloum" HouseAddress="{Binding OneHouseListAddresss}" HouseRent="{Binding OneHouseListRent}"
+                                                       HouseState="{Binding OneHouseListState}" HouseStyle="{Binding OneHouseListType}" MouseDown="CommodityLoad_Down"/>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                                <!--<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                                                    <Icon:PackIconMaterial Kin" Foreground="Black"/>
+                                                </StackPanel>-->
+                                            </Grid>
+                                            <Grid x:Name="PersonalPage" Visibility="Collapsed" Opacity="0">
+                                                <StackPanel Orientation="Vertical">
+                                                    <StackPanel Orientation="Horizontal" x:Name="PerCommodityLineOne" Margin="0 5">
+                                                        <local:HouseSample Margin="10 0" x:Name="PerOneRowOneCloum" HouseAddress="{Binding OneHouseListAddresss}" HouseRent="{Binding OneHouseListRent}"
+                                                       HouseState="{Binding OneHouseListState}" HouseStyle="{Binding OneHouseListType}" MouseDown="PerCommodityLoda_Down"/>
+                                                        <local:HouseSample Margin="10 0" x:Name="PerOneRowTwoCloum" HouseAddress="{Binding OneHouseListAddresss}" HouseRent="{Binding OneHouseListRent}"
+                                                       HouseState="{Binding OneHouseListState}" HouseStyle="{Binding OneHouseListType}" MouseDown="PerCommodityLoda_Down"/>
+                                                        <local:HouseSample Margin="10 0" x:Name="PerOneRowThreeCloum" HouseAddress="{Binding OneHouseListAddresss}" HouseRent="{Binding OneHouseListRent}"
+                                                       HouseState="{Binding OneHouseListState}" HouseStyle="{Binding OneHouseListType}" MouseDown="PerCommodityLoda_Down"/>
+                                                        <local:HouseSample Margin="10 0" x:Name="PerOneRowFourCloum" HouseAddress="{Binding OneHouseListAddresss}" HouseRent="{Binding OneHouseListRent}"
+                                                       HouseState="{Binding OneHouseListState}" HouseStyle="{Binding OneHouseListType}" MouseDown="PerCommodityLoda_Down"/>
+                                                    </StackPanel>
+                                                    <StackPanel Orientation="Horizontal" x:Name="PerCommodityLineTwo" Margin="0 5">
+                                                        <local:HouseSample Margin="10 0" x:Name="PerTwoRowOneCloum" HouseAddress="{Binding OneHouseListAddresss}" HouseRent="{Binding OneHouseListRent}"
+                                                       HouseState="{Binding OneHouseListState}" HouseStyle="{Binding OneHouseListType}" MouseDown="PerCommodityLoda_Down"/>
+                                                        <local:HouseSample Margin="10 0" x:Name="PerTwoRowTwoCloum" HouseAddress="{Binding OneHouseListAddresss}" HouseRent="{Binding OneHouseListRent}"
+                                                       HouseState="{Binding OneHouseListState}" HouseStyle="{Binding OneHouseListType}" MouseDown="PerCommodityLoda_Down"/>
+                                                        <local:HouseSample Margin="10 0" x:Name="PerTwoRowThreeCloum" HouseAddress="{Binding OneHouseListAddresss}" HouseRent="{Binding OneHouseListRent}"
+                                                       HouseState="{Binding OneHouseListState}" HouseStyle="{Binding OneHouseListType}" MouseDown="PerCommodityLoda_Down"/>
+                                                        <local:HouseSample Margin="10 0" x:Name="PerTwoRowFourCloum" HouseAddress="{Binding OneHouseListAddresss}" HouseRent="{Binding OneHouseListRent}"
+                                                       HouseState="{Binding OneHouseListState}" HouseStyle="{Binding OneHouseListType}" MouseDown="PerCommodityLoda_Down"/>
+                                                    </StackPanel>
+                                                    <StackPanel Orientation="Horizontal" x:Name="PerCommodityLineThree" Margin="0 5">
+                                                        <local:HouseSample Margin="10 0" x:Name="PerThreeRowOneCloum" HouseAddress="{Binding OneHouseListAddresss}" HouseRent="{Binding OneHouseListRent}"
+                                                       HouseState="{Binding OneHouseListState}" HouseStyle="{Binding OneHouseListType}" MouseDown="PerCommodityLoda_Down"/>
+                                                        <local:HouseSample Margin="10 0" x:Name="PerThreeRowTwoCloum" HouseAddress="{Binding OneHouseListAddresss}" HouseRent="{Binding OneHouseListRent}"
+                                                       HouseState="{Binding OneHouseListState}" HouseStyle="{Binding OneHouseListType}" MouseDown="PerCommodityLoda_Down"/>
+                                                        <local:HouseSample Margin="10 0" x:Name="PerThreeRowThreeCloum" HouseAddress="{Binding OneHouseListAddresss}" HouseRent="{Binding OneHouseListRent}"
+                                                       HouseState="{Binding OneHouseListState}" HouseStyle="{Binding OneHouseListType}" MouseDown="PerCommodityLoda_Down"/>
+                                                        <local:HouseSample Margin="10 0" x:Name="PerThreeRowFourCloum" HouseAddress="{Binding OneHouseListAddresss}" HouseRent="{Binding OneHouseListRent}"
+                                                       HouseState="{Binding OneHouseListState}" HouseStyle="{Binding OneHouseListType}" MouseDown="PerCommodityLoda_Down"/>
+                                                    </StackPanel>
+                                                    <StackPanel Orientation="Horizontal" x:Name="PerCommodityLineFour" Margin="0 5">
+                                                        <local:HouseSample Margin="10 0" x:Name="PerFourRowOneCloum" HouseAddress="{Binding OneHouseListAddresss}" HouseRent="{Binding OneHouseListRent}"
+                                                       HouseState="{Binding OneHouseListState}" HouseStyle="{Binding OneHouseListType}" MouseDown="PerCommodityLoda_Down"/>
+                                                        <local:HouseSample Margin="10 0" x:Name="PerFourRowTwoCloum" HouseAddress="{Binding OneHouseListAddresss}" HouseRent="{Binding OneHouseListRent}"
+                                                       HouseState="{Binding OneHouseListState}" HouseStyle="{Binding OneHouseListType}" MouseDown="PerCommodityLoda_Down"/>
+                                                        <local:HouseSample Margin="10 0" x:Name="PerFourRowThreeCloum" HouseAddress="{Binding OneHouseListAddresss}" HouseRent="{Binding OneHouseListRent}"
+                                                       HouseState="{Binding OneHouseListState}" HouseStyle="{Binding OneHouseListType}" MouseDown="PerCommodityLoda_Down"/>
+                                                        <local:HouseSample Margin="10 0" x:Name="PerFourRowFourCloum" HouseAddress="{Binding OneHouseListAddresss}" HouseRent="{Binding OneHouseListRent}"
+                                                       HouseState="{Binding OneHouseListState}" HouseStyle="{Binding OneHouseListType}" MouseDown="PerCommodityLoda_Down"/>
+                                                    </StackPanel>
+                                                </StackPanel>
+
+                                            </Grid>
+                                            <Grid x:Name="NomessagePage" Visibility="Collapsed">
+                                                <TextBlock Text="无信息" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#3253f1" FontSize="50" FontWeight="Bold"/>
+                                            </Grid>
+                                            <Grid x:Name="DatailsPage" Visibility="Collapsed">
+                                                <local:HouseDetailsPage x:Name="DetControl" DetailsHouseAddress="{Binding DetHouseAddress}" DetailsHouseAge="{Binding DetHouseAge}"
+                                                                        DetailsHouseMaster="{Binding DetHouseMaster}" DetailsHouseRent="{Binding DetHouseRent}"
+                                                                        DetailsHouseState="{Binding DetHouseState}" DetailsHouseTenant="{Binding DetHouseTenant}"
+                                                                        DetailsHouseType="{Binding DetHouseType}" ButtonText="{Binding HireText}"/>
+                                            </Grid>
+
+                                            <Grid x:Name="AddHouse" Visibility="Collapsed">
+                                                <local:AddResources/>
+                                            </Grid>
+                                        </Grid>
+                                    </Border>
+                                </Grid>
+
+                                <Grid Grid.Row="2" x:Name="PageS">
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Height="25" Margin="0 -3 0 0">
+                                        <Button Background="Transparent" BorderThickness="0" x:Name="PreviousPageButton" Click="PreviousPageButton_Click">
+                                            <Icon:PackIconMaterial Kind="ArrowLeftBoldCircle" Foreground="#3253f1" Height="20" Width="20"/>
+                                        </Button>
+                                        <TextBlock FontSize="14" Text="{Binding MarketNum}" Foreground="#3253f1" FontWeight="Bold" VerticalAlignment="Bottom" x:Name="PageNum"/>
+                                        <Button Background="Transparent" BorderThickness="0" x:Name="NextPageButton" Click="NextPageButton_Click" Cursor="Hand">
+                                            <Icon:PackIconMaterial Kind="ArrowRightBoldCircle" Foreground="#3253f1" Height="20" Width="20"/>
+                                        </Button>
+                                    </StackPanel>
+
+                                </Grid>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+
+</Window>

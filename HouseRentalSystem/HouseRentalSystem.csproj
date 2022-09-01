@@ -1,0 +1,125 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="img\224User.png" />
+    <None Remove="img\224UserBlue.png" />
+    <None Remove="img\39c4d2177f3e670988fe0f297ec79f3df9dc5528.png" />
+    <None Remove="img\Close.png" />
+    <None Remove="img\CloseBlue.png" />
+    <None Remove="img\Home.png" />
+    <None Remove="img\HomeBlue.png" />
+    <None Remove="img\HomePage.png" />
+    <None Remove="img\HomePageBlue.png" />
+    <None Remove="img\HouseSample.png" />
+    <None Remove="img\Lease.png" />
+    <None Remove="img\LeaseBlue.png" />
+    <None Remove="img\LoadUser.png" />
+    <None Remove="img\Statistics.png" />
+    <None Remove="img\StatisticsBlue.png" />
+    <None Remove="img\ToMoDaChi.png" />
+    <None Remove="img\ToMoDaChiBlue.png" />
+    <None Remove="img\Warning.png" />
+  </ItemGroup>
+
+    <ItemGroup>
+	    <Reference Include="Analysis">
+		    <HintPath>..\Analysis\bin\Debug\Analysis.dll</HintPath>
+	    </Reference>
+	    <Reference Include="mysql-connector-java-8.0.29">
+		    <HintPath>..\..\..\..\..\..\dll\HouseDll\mysql-connector-java-8.0.29.dll</HintPath>
+	    </Reference>
+	    <Reference Include="MySql.Data">
+		    <HintPath>..\..\..\..\..\..\MySQL\mysql dll\MySql.Data.dll</HintPath>
+	    </Reference>
+    </ItemGroup>
+	
+  <ItemGroup>
+    <PackageReference Include="FontAwesome.WPF" Version="4.7.0.9" />
+    <PackageReference Include="IKVM" Version="8.2.1" />
+    <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
+    <PackageReference Include="MahApps.Metro.IconPacks.Material" Version="4.11.0" />
+    <PackageReference Include="MaterialDesignThemes" Version="4.5.0" />
+    <PackageReference Include="MySql.Data" Version="8.0.30" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="img\224User.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\224UserBlue.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\HouseSample.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="UserImg\39c4d2177f3e670988fe0f297ec79f3df9dc5528.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\Close.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\CloseBlue.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\HomePage.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\HomePageBlue.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\Lease.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\LeaseBlue.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\LoadUser.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\Statistics.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\StatisticsBlue.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\ToMoDaChi.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\ToMoDaChiBlue.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\Warning.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="jar\Tool.jar">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+	<ItemGroup>
+		<IkvmReference Include="jar\Tool.jar">
+			<AssemblyName>Tool</AssemblyName>
+			<AssemblyVersion>1.0.0.4</AssemblyVersion>
+		</IkvmReference>
+	</ItemGroup>
+
+</Project>

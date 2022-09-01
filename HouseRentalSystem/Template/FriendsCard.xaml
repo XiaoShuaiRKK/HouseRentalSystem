@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="HouseRentalSystem.Template.FriendsCard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HouseRentalSystem.Template"
+             Name="friendscard">
+    <Border CornerRadius="10" Padding="3">
+        <Border.Style>
+            <Style TargetType="Border">
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="#f7f6f4"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </Border.Style>
+        <StackPanel Orientation="Horizontal">
+            <Border BorderBrush="#3253f1" CornerRadius="50" BorderThickness="1" Width="40" Height="40" ClipToBounds="True" Margin="0 0 5 0">
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Grid.Clip>
+                        <EllipseGeometry Center="11 11" RadiusX="11" RadiusY="11"/>
+                    </Grid.Clip>
+                    <Image Width="35" Height="35" x:Name="UserSalesListCard" Stretch="Fill" Source="{Binding ElementName=friendscard,Path=FriendsListImg}"/>
+                </Grid>
+            </Border>
+            <StackPanel Orientation="Vertical">
+                <TextBlock Style="{StaticResource FriendsListUserText}" Text="{Binding ElementName=friendscard,Path=FriendsListName}"/>
+                <TextBlock Style="{StaticResource FriendsSendText}" Text="{Binding ElementName=friendscard,Path=FriendsListSendLately}"/>
+                <TextBlock Style="{StaticResource FriendsOnlineText}" Text="{Binding ElementName=friendscard,Path=FriendsListOnline}"/>
+            </StackPanel>
+        </StackPanel>
+    </Border>
+    
+</UserControl>
