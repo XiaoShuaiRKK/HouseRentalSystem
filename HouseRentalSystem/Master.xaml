@@ -64,7 +64,7 @@
             </Border>
             <Border CornerRadius="0 30 30 0" Grid.Column="1" Background="#f7f6f4" Padding="20">
                 <Grid>
-                    <Grid x:Name="HomePage" Opacity="0">
+                    <Grid x:Name="HomePage" Opacity="1" Visibility="Visible">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="6*"/>
                             <ColumnDefinition Width="2.5*"/>
@@ -188,7 +188,7 @@
                             </Border>
                         </Grid>
                     </Grid>
-                    <Grid x:Name="RentalPage" Opacity="1">
+                    <Grid x:Name="RentalPage" Opacity="0">
                         <Border Style="{StaticResource HomepageHeaderTitle}" Padding="20 5">
                             <Grid>
                                 <Grid.RowDefinitions>

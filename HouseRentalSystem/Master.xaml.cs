@@ -754,7 +754,7 @@ namespace HouseRentalSystem
             if(RentalButtonFalg == 0)
             {
                 RentalButtonDown(PersonalButton, MarketButton,MarketText, PersonalText);
-                MiniPage(MarketPage, PersonalPage, MarketPage, PersonalPage);
+                MiniPage(MarketPage, PersonalPage, MarketPage, PersonalPage,AddHouse);
                 PersonalLoad(service.AllCount(DataTemp.Username)[0],service.PerDrawAll(DataTemp.Username));
                 RentalButtonFalg = 1;
             }
@@ -765,7 +765,7 @@ namespace HouseRentalSystem
             if(RentalButtonFalg == 1)
             {
                 RentalButtonDown(MarketButton, PersonalButton, PersonalText, MarketText);
-                MiniPage(PersonalPage, MarketPage, PersonalPage, MarketPage);
+                MiniPage(PersonalPage, MarketPage, PersonalPage, MarketPage,AddHouse);
                 RentalButtonFalg = 0;
             }
         }
@@ -845,7 +845,7 @@ namespace HouseRentalSystem
             storyboard.Begin();
         }
 
-        public void MiniPage(DependencyObject dob,DependencyObject Twodob,Grid grid,Grid Twogrid)
+        public void MiniPage(DependencyObject dob,DependencyObject Twodob,Grid grid,Grid Twogrid,Grid AddGrid)
         {
             Storyboard storyboard = new Storyboard();
 
@@ -868,6 +868,7 @@ namespace HouseRentalSystem
 
             grid.Visibility = Visibility.Collapsed;
             Twogrid.Visibility = Visibility.Visible;
+            AddGrid.Visibility = Visibility.Collapsed;
         }
 
         #endregion
